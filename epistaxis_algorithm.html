@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epistaxis Management Algorithm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .algorithm-section {
+            margin: 30px 0;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .step-content {
+            display: inline-block;
+            vertical-align: top;
+            width: calc(100% - 50px);
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .step-description {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        ul {
+            margin: 10px 0 10px 30px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box strong {
+            color: #856404;
+        }
+
+        .emergency-box {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .emergency-box strong {
+            color: #721c24;
+        }
+
+        .flowchart {
+            background: #e9ecef;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .flowchart-step {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 15px auto;
+            border-radius: 8px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .flowchart-arrow {
+            color: #667eea;
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e9ecef;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .reference {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .reference h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section-title {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Epistaxis Management Algorithm</h1>
+            <p class="subtitle">A Comprehensive Guide to Nosebleed Treatment</p>
+        </header>
+
+        <div class="emergency-box">
+            <strong>⚠️ EMERGENCY SITUATIONS:</strong> Seek immediate medical attention if:
+            <ul>
+                <li>Bleeding continues for more than 20 minutes despite pressure</li>
+                <li>Large amount of blood loss causing dizziness, weakness, or fainting</li>
+                <li>Difficulty breathing</li>
+                <li>Bleeding following head injury</li>
+                <li>Taking blood thinners (anticoagulants)</li>
+            </ul>
+        </div>
+
+        <div class="algorithm-section">
+            <h2 class="section-title">Initial Assessment & First Aid</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <div class="step-title">Patient Position</div>
+                    <div class="step-description">
+                        Sit the patient upright and lean slightly forward. This prevents blood from flowing down the throat and reduces the risk of aspiration.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <div class="step-title">Apply Direct Pressure</div>
+                    <div class="step-description">
+                        Pinch the soft part of the nose (just below the bony bridge) firmly for 10-15 minutes continuously. The patient should breathe through their mouth.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <div class="step-title">Cold Compress</div>
+                    <div class="step-description">
+                        Apply a cold compress or ice pack to the bridge of the nose and cheeks. This helps constrict blood vessels.
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <div class="step-title">Reassess After 15 Minutes</div>
+                    <div class="step-description">
+                        After maintaining pressure, gently release and check if bleeding has stopped. If bleeding continues, reapply pressure for another 10-15 minutes.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <h2 class="section-title">Clinical Management Flowchart</h2>
+            
+            <div class="flowchart">
+                <div class="flowchart-step">
+                    <strong>Patient presents with epistaxis</strong><br>
+                    Initial assessment and first aid measures
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step">
+                    <strong>Bleeding stopped?</strong>
+                </div>
+                <div class="flowchart-arrow">↓ NO</div>
+                <div class="flowchart-step">
+                    <strong>Anterior vs Posterior Epistaxis</strong><br>
+                    Examine nasal cavity to locate source
+                </div>
+                <div class="flowchart-arrow">↓</div>
+                <div class="flowchart-step">
+                    <strong>Anterior (90% of cases)</strong><br>
+                    Topical vasoconstrictor + Cautery or Nasal packing
+                </div>
+                <div class="flowchart-arrow">↓ Failure</div>
+                <div class="flowchart-step">
+                    <strong>Posterior (10% of cases)</strong><br>
+                    Posterior nasal packing or balloon tamponade<br>
+                    Hospital admission required
+                </div>
+                <div class="flowchart-arrow">↓ Failure</div>
+                <div class="flowchart-step">
+                    <strong>Surgical Intervention</strong><br>
+                    Arterial ligation or embolization
+                </div>
+            </div>
+        </div>
+
+        <div class="algorithm-section">
+            <h2 class="section-title">Medical Treatment Options</h2>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                    <div class="step-title">Topical Vasoconstrictors</div>
+                    <div class="step-description">
+                        <ul>
+                            <li>Oxymetazoline (Afrin) spray or soaked cotton pledgets</li>
+                            <li>Phenylephrine solution</li>
+                            <li>Cocaine solution (in clinical settings)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                    <div class="step-title">Cauterization</div>
+                    <div class="step-description">
+                        <ul>
+                            <li>Silver nitrate sticks for visible bleeding points</li>
+                            <li>Electrocautery for larger vessels</li>
+                            <li>Apply after achieving hemostasis and with topical anesthetic</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                    <div class="step-title">Nasal Packing</div>
+                    <div class="step-description">
+                        <ul>
+                            <li>Absorbable packing (Gelfoam, Surgicel)</li>
+                            <li>Non-absorbable packing (Merocel, petroleum gauze)</li>
+                            <li>Balloon devices (Rapid Rhino, Epistat)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                    <div class="step-title">Posterior Packing</div>
+                    <div class="step-description">
+                        Required for posterior epistaxis:
+                        <ul>
+                            <li>Foley catheter technique</li>
+                            <li>Commercial posterior packing devices</li>
+                            <li>Requires hospital admission and monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ IMPORTANT CONSIDERATIONS:</strong>
+            <ul>
+                <li>Document vital signs and estimate blood loss</li>
+                <li>Consider underlying causes (hypertension, anticoagulation, trauma)</li>
+                <li>Prophylactic antibiotics may be needed with prolonged packing</li>
+                <li>Follow-up with ENT specialist for recurrent epistaxis</li>
+            </ul>
+        </div>
+
+        <div class="algorithm-section">
+            <h2 class="section-title">Prevention & Aftercare</h2>
+
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-title">Preventive Measures</div>
+                    <div class="step-description">
+                        <ul>
+                            <li>Use humidifier to maintain nasal moisture</li>
+                            <li>Apply saline nasal spray regularly</li>
+                            <li>Avoid nose picking and forceful blowing</li>
+                            <li>Control hypertension if present</li>
+                            <li>Review anticoagulation therapy with physician</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-content">
+                    <div class="step-title">Post-Treatment Instructions</div>
+                    <div class="step-description">
+                        <ul>
+                            <li>Avoid strenuous activity for 24-48 hours</li>
+                            <li>Sleep with head elevated</li>
+                            <li>Avoid hot liquids and spicy foods</li>
+                            <li>Do not remove nasal packing if present (follow medical advice)</li>
+                            <li>Return if bleeding recurs or worsens</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reference">
+            <h3>References & Resources</h3>
+            <p>This algorithm is based on current medical guidelines and best practices for epistaxis management. Always consult with qualified healthcare professionals for individual patient care.</p>
+            <ul>
+                <li>American Academy of Otolaryngology Guidelines</li>
+                <li>Emergency Medicine Practice Standards</li>
+                <li>ENT Clinical Practice Guidelines</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p><strong>Disclaimer:</strong> This information is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+            <p>Last updated: October 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
